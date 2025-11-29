@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(0);
+ini_set('display_errors', 0);
+
 date_default_timezone_set("Asia/Jakarta");
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -24,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8080';
+$config['base_url'] ='http://localhost/futsal/';
 
 /*
 |--------------------------------------------------------------------------
@@ -215,7 +219,7 @@ $config['directory_trigger'] = 'd';
 |
 */
 $config['log_threshold'] = 0;
-
+error_reporting(E_ALL & ~E_DEPRECATED);
 /*
 |--------------------------------------------------------------------------
 | Error Logging Directory Path

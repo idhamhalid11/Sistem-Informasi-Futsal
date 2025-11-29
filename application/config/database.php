@@ -75,17 +75,19 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '', //wajib isi: localhost jika pakai databse lokal atau online (sqlite abaikan ini)
-	'username' => '', //wajib isi: username database jika pakai databse lokal atau online (sqlite abaikan ini)
+	'hostname' => 'localhost', //wajib isi: localhost jika pakai databse lokal atau online (sqlite abaikan ini)
+	'username' => 'root', //wajib isi: username database jika pakai databse lokal atau online (sqlite abaikan ini)
 	'password' => '', //wajib isi: password database jika pakai databse lokal atau online (sqlite abaikan ini)
-	'database' => './db/db_futsal.db',
-	'dbdriver' => 'sqlite3', //gunakan mysqli jika ingin menggunakan mySQL, abaikan ini jika pakai sqlite
+	'database' => 'futsal',
+	'dbdriver' => 'mysqli', //abaikan ini jika pakai sqlite
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => TRUE,
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
+
 	'dbcollat' => 'utf8_general_ci',
 	'swap_pre' => '',
 	'encrypt' => FALSE,

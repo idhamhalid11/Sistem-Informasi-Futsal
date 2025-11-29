@@ -39,71 +39,58 @@ class Auth extends CI_Controller
 		}
 	}
 
-	/**
-	 * Log the user in
-	 */
-	public function login()
-	{
-		$this->data['title'] = "Login BackEnd Area";
+/**
+ * Log the user in
+ */
+public function login()
+{
+	$this->data['title'] = "Login BackEnd Area";
+	$this->data['title'] = $this->lang->line('login_heading');
 
-		$this->load->library('Recaptcha');
+	// validate form input
+	$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
+	$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
+	$this->form_validation->set_message('required', '{field} mohon diisi');
 
-		$this->data['captcha'] = $this->recaptcha->getWidget();
-		$this->data['script_captcha'] = $this->recaptcha->getScriptTag();
-		$this->data['title'] = $this->lang->line('login_heading');
+	if ($this->form_validation->run() == FALSE) {
+		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-		$recaptcha = $this->input->post('g-recaptcha-response');
-		$response = $this->recaptcha->verifyResponse($recaptcha);
+		$this->data['identity'] = array(
+			'name' 	=> 'identity',
+			'id'    => 'identity',
+			'class' => 'form-control',
+			'placeholder' => 'Isikan Email Anda',
+			'value' => $this->form_validation->set_value('identity'),
+		);
+		$this->data['password'] = array(
+			'name' 	=> 'password',
+			'id'   	=> 'password',
+			'class' => 'form-control',
+			'placeholder' => 'Isikan Password Anda',
+		);
 
-		// validate form input
-		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
-		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
-		$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'required');
-		$this->form_validation->set_message('required', '{field} mohon diisi');
+		$this->_render_page('back/auth/login', $this->data);
+	} else {
+		// check to see if the user is logging in
+		// check for "remember me"
+		$remember = (bool) $this->input->post('remember');
 
-		// jika form_validation gagal dijalankan dan response recaptcha juga gagal maka akan diarahkan kembali ke halaman login
-		// if ($this->form_validation->run() == FALSE)
-		// {
-		if ($this->form_validation->run() == FALSE || !isset($response['success']) || $response['success'] <> TRUE) {
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
-			$this->data['identity'] = array(
-				'name' 	=> 'identity',
-				'id'    => 'identity',
-				'class' => 'form-control',
-				'placeholder' => 'Isikan Email Anda',
-				'value' => $this->form_validation->set_value('identity'),
-			);
-			$this->data['password'] = array(
-				'name' 	=> 'password',
-				'id'   	=> 'password',
-				'class' => 'form-control',
-				'placeholder' => 'Isikan Password Anda',
-			);
-
-			$this->_render_page('back/auth/login', $this->data);
+		if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
+			//if the login is successful
+			//redirect them back to the home page
+			$this->session->set_flashdata('message', '<div class="box-body">
+				<div class="alert alert-block alert-success"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
+				<i class="ace-icon fa fa-bullhorn green"></i> Login Berhasil
+				</div></div>');
+			redirect('admin/dashboard', 'refresh');
 		} else {
-			// check to see if the user is logging in
-			// check for "remember me"
-			$remember = (bool) $this->input->post('remember');
-
-			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
-				//if the login is successful
-				//redirect them back to the home page
-				$this->session->set_flashdata('message', '<div class="box-body">
-					<div class="alert alert-block alert-success"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
-					<i class="ace-icon fa fa-bullhorn green"></i> Login Berhasil
-					</div></div>');
-				redirect('admin/dashboard', 'refresh');
-			} else {
-				// if the login was un-successful
-				// redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors(''));
-				redirect('admin/auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
-			}
+			// if the login was un-successful
+			// redirect them back to the login page
+			$this->session->set_flashdata('message', $this->ion_auth->errors(''));
+			redirect('admin/auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 		}
 	}
-
+}
 	/**
 	 * Log the user out
 	 */

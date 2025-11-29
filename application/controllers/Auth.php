@@ -14,20 +14,20 @@ class Auth extends CI_Controller {
 		$this->load->model('Wilayah_model');
 
 		$this->data['module'] = 'Customer';
-		$this->data['company_data'] 			= $this->Company_model->get_by_company();
-		$this->data['kontak'] 						= $this->Kontak_model->get_all();
+		$this->data['company_data'] = $this->Company_model->get_by_company();
+		$this->data['kontak'] = $this->Kontak_model->get_all();
 	}
 
 	public function register()
 	{
-		$this->data['title'] 							= 'Register/ Login';
+		$this->data['title'] = 'Register/ Login';
 
 		// Cek sudah/ belum login
 		if ($this->ion_auth->logged_in()){redirect(base_url());}
 
 		/* setting bawaan ionauth */
-		$tables 					= $this->config->item('tables','ion_auth');
-		$identity_column 	= $this->config->item('identity','ion_auth');
+		$tables = $this->config->item('tables','ion_auth');
+		$identity_column = $this->config->item('identity','ion_auth');
 
 		$this->data['identity_column'] = $identity_column;
 
@@ -55,13 +55,13 @@ class Auth extends CI_Controller {
 
 			// data tambahan yang untuk dimasukkan pada tabel
 			$additional_data = array(
-				'name' 				=> $this->input->post('name'),
-				'username'  	=> $this->input->post('username'),
-				'phone'      	=> $this->input->post('phone'),
-				'address'    	=> $this->input->post('alamat'),
-				'provinsi' 		=> $this->input->post('provinsi_id'),
-				'kota'   			=> $this->input->post('kota_id'),
-				'usertype'    => '4',
+				'name' => $this->input->post('name'),
+				'username' => $this->input->post('username'),
+				'phone' => $this->input->post('phone'),
+				'address' => $this->input->post('alamat'),
+				'provinsi' => $this->input->post('provinsi_id'),
+				'kota' => $this->input->post('kota_id'),
+				'usertype' => '4',
 			);
 
 			// mengirimkan data yang sudah disediakan diatas $additional_data $email, $identity $password
@@ -71,108 +71,95 @@ class Auth extends CI_Controller {
 			$this->session->set_flashdata('message', '<div class="alert alert-success alert">Registrasi Berhasil, silahkan login untuk mulai booking lapangan.</div>');
 			redirect(base_url());
 		}
-			else
-			{
-				// display the create user form | set the flash data error message if there is one
-				$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+		else
+		{
+			// display the create user form | set the flash data error message if there is one
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-				$this->data['name'] = array(
-					'name'  => 'name',
-					'id'    => 'name',
-					'type'  => 'text',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('name'),
-				);
-				$this->data['username'] = array(
-					'name'  => 'username',
-					'id'    => 'username',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('username'),
-				);
-				$this->data['email'] = array(
-					'name'  => 'email',
-					'id'    => 'email',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('email'),
-				);
-				$this->data['phone'] = array(
-					'name'  => 'phone',
-					'id'    => 'phone',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('phone'),
-				);
-				$this->data['password'] = array(
-					'name'  => 'password',
-					'id'    => 'password',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('password'),
-				);
-				$this->data['password_confirm'] = array(
-					'name'  => 'password_confirm',
-					'id'    => 'password_confirm',
-					'class'  => 'form-control',
-					'value' => $this->form_validation->set_value('password_confirm'),
-				);
-				$this->data['alamat'] = array(
-					'name'  => 'alamat',
-					'id'    => 'alamat',
-					'class'  => 'form-control',
-					'cols'  => '2',
-					'rows'  => '2',
-					'value' => $this->form_validation->set_value('alamat'),
-				);
-				$this->data['provinsi_id'] = array(
-		      'name'        => 'provinsi_id',
-		      'id'          => 'provinsi_id',
-		      'class'       => 'form-control',
-		      'onChange'    => 'tampilKota()',
-		      'required'    => '',
-		    );
-		    $this->data['kota_id'] = array(
-		      'name'        => 'kota_id',
-		      'id'          => 'kota_id',
-		      'class'       => 'form-control',
-		      'required'    => '',
-		    );
+			$this->data['name'] = array(
+				'name'  => 'name',
+				'id'    => 'name',
+				'type'  => 'text',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('name'),
+			);
+			$this->data['username'] = array(
+				'name'  => 'username',
+				'id'    => 'username',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('username'),
+			);
+			$this->data['email'] = array(
+				'name'  => 'email',
+				'id'    => 'email',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('email'),
+			);
+			$this->data['phone'] = array(
+				'name'  => 'phone',
+				'id'    => 'phone',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('phone'),
+			);
+			$this->data['password'] = array(
+				'name'  => 'password',
+				'id'    => 'password',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('password'),
+			);
+			$this->data['password_confirm'] = array(
+				'name'  => 'password_confirm',
+				'id'    => 'password_confirm',
+				'class' => 'form-control',
+				'value' => $this->form_validation->set_value('password_confirm'),
+			);
+			$this->data['alamat'] = array(
+				'name'  => 'alamat',
+				'id'    => 'alamat',
+				'class' => 'form-control',
+				'cols'  => '2',
+				'rows'  => '2',
+				'value' => $this->form_validation->set_value('alamat'),
+			);
+			$this->data['provinsi_id'] = array(
+				'name'        => 'provinsi_id',
+				'id'          => 'provinsi_id',
+				'class'       => 'form-control',
+				'onChange'    => 'tampilKota()',
+				'required'    => '',
+			);
+			$this->data['kota_id'] = array(
+				'name'        => 'kota_id',
+				'id'          => 'kota_id',
+				'class'       => 'form-control',
+				'required'    => '',
+			);
 
-				$this->data['ambil_provinsi'] = $this->Wilayah_model->get_provinsi();
+			$this->data['ambil_provinsi'] = $this->Wilayah_model->get_provinsi();
 
-				$this->load->view('front/auth/register', $this->data);
-			}
+			$this->load->view('front/auth/register', $this->data);
+		}
 	}
 
 	public function pilih_kota()
 	{
-		$this->data['kota']=$this->Wilayah_model->get_kota($this->uri->segment(3));
+		$this->data['kota'] = $this->Wilayah_model->get_kota($this->uri->segment(3));
 		$this->load->view('front/auth/kota',$this->data);
 	}
 
 	public function login()
 	{
-		$this->data['title'] 							= 'Login';
+		$this->data['title'] = 'Login';
 
 		// cek sudah login/belum
 		if($this->ion_auth->logged_in()){redirect(base_url());}
 
-		// panggil library recaptcha
-		$this->load->library('Recaptcha');
-
-		// siapkan data recaptcha
-		$this->data['captcha'] = $this->recaptcha->getWidget();
-		$this->data['script_captcha'] = $this->recaptcha->getScriptTag();
-		$recaptcha 	= $this->input->post('g-recaptcha-response');
-    $response 	= $this->recaptcha->verifyResponse($recaptcha);
-
-		//validate form input
+		// validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'callback_identity_check');
 		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
-		$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'required');
 		$this->form_validation->set_message('required', '{field} mohon diisi');
 
-		// jika form_validation gagal dijalankan dan response recaptcha juga gagal maka akan diarahkan kembali ke halaman login
-		// if ($this->form_validation->run() == FALSE)
-		// {
-		if ($this->form_validation->run() == FALSE || !isset($response['success']) || $response['success'] <> TRUE)
+		if ($this->form_validation->run() == FALSE)
 		{
 			// set pesan error dari ion_auth
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -193,26 +180,25 @@ class Auth extends CI_Controller {
 			// _render_page == view
 			$this->_render_page('front/auth/login', $this->data);
 		}
+		else
+		{
+			// cek user login dan menekan tombol remember me
+			$remember = (bool) $this->input->post('remember');
+
+			// cek keberhasilan login dengan function login_front
+			if ($this->ion_auth->login_front($this->input->post('identity'), $this->input->post('password'), $remember))
+			{
+				//set message dan redirect ke home apabila berhasil login
+				$this->session->set_flashdata('message', '<div class="alert alert-block alert-success"><i class="ace-icon fa fa-bullhorn green"></i> Login Berhasil</div>');
+				redirect(base_url(), 'refresh');
+			}
 			else
 			{
-				// cek user login dan menekan tombol remember me
-				$remember = (bool) $this->input->post('remember');
-
-				// cek keberhasilan login dengan function login_front
-				if ($this->ion_auth->login_front($this->input->post('identity'), $this->input->post('password'), $remember))
-				{
-					//set message dan redirect ke home apabila berhasil login
-					$this->session->set_flashdata('message', '<div class="alert alert-block alert-success"><i class="ace-icon fa fa-bullhorn green"></i> Login Berhasil</div>');
-					redirect(base_url(), 'refresh');
-				}
-					else
-					{
-						//set message dan redirect ke form login apabila gagal login
-						$this->session->set_flashdata('message', $this->ion_auth->errors(''));
-						redirect('auth/login', 'refresh');
-					}
-
+				//set message dan redirect ke form login apabila gagal login
+				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				redirect('auth/login', 'refresh');
 			}
+		}
 	}
 
 	public function logout()
@@ -235,7 +221,7 @@ class Auth extends CI_Controller {
 
 	public function profil()
 	{
-		$this->data['title'] 			= 'Profil Saya';
+		$this->data['title'] = 'Profil Saya';
 
 		$this->data['profil'] = $this->Ion_auth_model->profil();
 
@@ -278,11 +264,6 @@ class Auth extends CI_Controller {
 		// cek tombol submit ditekan atau tidak/ berisi
 		if (isset($_POST) && !empty($_POST))
 		{
-			// mengecek validitas request update data
-			// if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id')){
-			// 	show_error($this->lang->line('error_csrf'));
-			// }
-
 			// update password jika dimasukkan/ diisi
 			if ($this->input->post('password')){
 				$this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
@@ -294,13 +275,13 @@ class Auth extends CI_Controller {
 			{
 				// siapkan data
 				$data = array(
-					'name' 			=> $this->input->post('name'),
-					'username'  => $this->input->post('username'),
-					'email'     => strtolower($this->input->post('email')),
-					'address'  	=> $this->input->post('address'),
-					'phone'     => $this->input->post('phone'),
-					'provinsi'     => $this->input->post('provinsi_id'),
-					'kota'     => $this->input->post('kota_id'),
+					'name' => $this->input->post('name'),
+					'username' => $this->input->post('username'),
+					'email' => strtolower($this->input->post('email')),
+					'address' => $this->input->post('address'),
+					'phone' => $this->input->post('phone'),
+					'provinsi' => $this->input->post('provinsi_id'),
+					'kota' => $this->input->post('kota_id'),
 				);
 
 				// jika password terisi
@@ -312,24 +293,21 @@ class Auth extends CI_Controller {
 				if($this->ion_auth->update($user->id, $data))
 				{
 					$this->session->set_flashdata('message', '
-	        <div class="alert alert-block alert-success"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
+					<div class="alert alert-block alert-success"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
 						<i class="ace-icon fa fa-bullhorn green"></i> Update Data Berhasil
-	        </div>');
-	        redirect(site_url('auth/profil'));
+					</div>');
+					redirect(site_url('auth/profil'));
 				}
 				else{
 					// Set pesan
 					$this->session->set_flashdata('message', '
-	        <div class="alert alert-block alert-danger"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
+					<div class="alert alert-block alert-danger"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
 						<i class="ace-icon fa fa-bullhorn green"></i> Update Data Gagal
-	        </div>');
-	        redirect(site_url(base_url()));
+					</div>');
+					redirect(site_url(base_url()));
 				}
 			}
 		}
-
-		// perintah security csrf dari ion_auth, detailnya bisa baca di https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
-		// $this->data['csrf'] = $this->_get_csrf_nonce();
 
 		// mengatur pesan/ flashdata eror
 		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
@@ -340,26 +318,26 @@ class Auth extends CI_Controller {
 		$this->data['name'] = array(
 			'name'  => 'name',
 			'id'    => 'name',
-			'class'  => 'form-control',
+			'class' => 'form-control',
 			'value' => $this->form_validation->set_value('name', $user->name),
 		);
 		$this->data['username'] = array(
 			'name'  => 'username',
 			'id'    => 'username',
-			'class'  => 'form-control',
-			'readonly'    => '',
+			'class' => 'form-control',
+			'readonly' => '',
 			'value' => $this->form_validation->set_value('username', $user->username),
 		);
 		$this->data['email'] = array(
 			'name'  => 'email',
 			'id'    => 'email',
-			'class'  => 'form-control',
+			'class' => 'form-control',
 			'value' => $this->form_validation->set_value('email', $user->email),
 		);
 		$this->data['address'] = array(
 			'name'  => 'address',
 			'id'    => 'address',
-			'class'  => 'form-control',
+			'class' => 'form-control',
 			'rows'  => '2',
 			'cols'  => '2',
 			'value' => $this->form_validation->set_value('address', $user->address),
@@ -368,25 +346,25 @@ class Auth extends CI_Controller {
 			'name'  => 'usertype',
 			'id'    => 'usertype',
 			'type'  => 'text',
-			'class'  => 'form-control',
+			'class' => 'form-control',
 		);
 		$this->data['phone'] = array(
 			'name'  => 'phone',
 			'id'    => 'phone',
-			'class'  => 'form-control',
+			'class' => 'form-control',
 			'value' => $this->form_validation->set_value('phone', $user->phone),
 		);
 		$this->data['password'] = array(
 			'name' => 'password',
 			'id'   => 'password',
-			'class'  => 'form-control',
-			'placeholder'  => 'diisi jika mengubah password'
+			'class' => 'form-control',
+			'placeholder' => 'diisi jika mengubah password'
 		);
 		$this->data['password_confirm'] = array(
 			'name' => 'password_confirm',
 			'id'   => 'password_confirm',
-			'class'  => 'form-control',
-			'placeholder'  => 'diisi jika mengubah password'
+			'class' => 'form-control',
+			'placeholder' => 'diisi jika mengubah password'
 		);
 		$this->data['provinsi_id'] = array(
 			'name'        => 'provinsi_id',
@@ -405,7 +383,7 @@ class Auth extends CI_Controller {
 		$kota = $user->provinsi;
 
 		$this->data['ambil_provinsi'] = $this->Wilayah_model->get_provinsi();
-		$this->data['ambil_kota'] 		= $this->Wilayah_model->get_kota($kota);
+		$this->data['ambil_kota'] = $this->Wilayah_model->get_kota($kota);
 
 		$this->_render_page('front/auth/edit_profil', $this->data);
 	}
@@ -418,48 +396,49 @@ class Auth extends CI_Controller {
 		{
 			$this->form_validation->set_rules('identity', $this->lang->line('forgot_password_username_label'), 'required');
 		}
-			else
-			{
-				$this->form_validation->set_rules('identity', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
-			}
+		else
+		{
+			$this->form_validation->set_rules('identity', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
+		}
 
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->data['type'] = $this->config->item('identity','ion_auth');
 			// setup the input
-			$this->data['identity'] = array('name' => 'identity',
+			$this->data['identity'] = array(
+				'name' => 'identity',
 				'id' => 'identity',
 			);
 
 			echo "<script>alert('Email harus diisi!');history.go(-1)</script>";
 		}
+		else
+		{
+			// perintah bawaan ion_auth untuk identity (jangan diotak-atik)
+			$identity_column = $this->config->item('identity','ion_auth');
+			// siapkan identity
+			$identity = $this->ion_auth->where($identity_column, $this->input->post('identity'))->users()->row();
+
+			// cek ketersediaan data akun $identity di tabel
+			if(empty($identity))
+			{
+				echo "<script>alert('Email tidak ditemukan!');history.go(-1)</script>";
+			}
 			else
 			{
-				// perintah bawaan ion_auth untuk identity (jangan diotak-atik)
-				$identity_column = $this->config->item('identity','ion_auth');
-				// siapkan identity
-				$identity = $this->ion_auth->where($identity_column, $this->input->post('identity'))->users()->row();
-
-				// cek ketersediaan data akun $identity di tabel
-				if(empty($identity))
+				// jalankan method forgotten_password untuk lanjut ke proses lupa password
+				$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+				// jika berhasil
+				if ($forgotten)
 				{
-					echo "<script>alert('Email tidak ditemukan!');history.go(-1)</script>";
+					echo "<script>alert('Reset Password berhasil, silahkan cek email Anda!');history.go(-1)</script>";
 				}
-					else
-					{
-						// jalankan method forgotten_password untuk lanjut ke proses lupa password
-						$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
-						// jika berhasil
-						if ($forgotten)
-						{
-							echo "<script>alert('Reset Password berhasil, silahkan cek email Anda!');history.go(-1)</script>";
-						}
-							else
-							{
-								echo "<script>alert('Reset Password gagal, silahkan dicoba kembali!');history.go(-1)</script>";
-							}
-					}
+				else
+				{
+					echo "<script>alert('Reset Password gagal, silahkan dicoba kembali!');history.go(-1)</script>";
+				}
 			}
+		}
 	}
 
 	// Tahap lanjutan dari lupa password -> reset password

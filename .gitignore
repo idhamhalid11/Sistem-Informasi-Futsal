@@ -1,1 +1,21 @@
 /vendor
+
+# (backup safety)
+application/config/config.php
+application/config/database.php
+
+# Logs dan cache
+application/logs/
+application/cache/
+
+# Environment  
+.env
+*.env
+
+# Database backups
+*.sqlite
+*.sql
+db/
+
+# User uploads (optional)
+assets/images/user/
