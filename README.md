@@ -69,19 +69,21 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 5. Akses ke `http://localhost/futsal`
 
 ## Konfigurasi Database
+
 Edit file yang berada di : `application/config/database.php`:
 ![cover](ss_project/database.php.jpg)
 
 ## Cara Login
 
 1. Backend: Sebagai SuperAdmin atau Admin:
-    - Akses ke `/admin/auth/login`
-    - Gunakan akun SuperAdmin dengan email superadmin@gmail.com dan password: superadmin, Admin: administrator@gmail.com dan password: administrator
+   - Akses ke `/admin/auth/login`
+   - Gunakan akun SuperAdmin dengan email superadmin@gmail.com dan password: superadmin, Admin: administrator@gmail.com dan password: administrator
 2. Frontend: Sebagai Customer Biasa dan Sudah Berlangganan Member
-    - Akses ke `/futsal/auth/login`
-    - Gunakan akun biasa dengan email `batistuta@gmail.com` dan password: asdfghjkl, Admin: `userpremium@gmail.com` dan password: asdfghjkl
+   - Akses ke `/futsal/auth/login`
+   - Gunakan akun biasa dengan email `batistuta@gmail.com` dan password: asdfghjkl, Admin: `userpremium@gmail.com` dan password: asdfghjkl
 
 ## Catatan
+
 1. TANPA CAPTCHA - Sistem login sudah dimodifikasi tanpa captcha untuk kemudahan testing
 2. DATABASE MYSQL - Menggunakan MySQL sebagai database utama
 
@@ -96,11 +98,10 @@ Anda bisa menginstall xampp/wampp atau LAMPP Stack di pc/komputer/laptop yang di
 2. [Cara Install Xampp di OS Linux](https://www.muhazmi.com/2016/12/cara-install-xampp-yang-baik-dan-benar.html)
 3. [Cara Install Xampp di OS Windows](https://www.muhazmi.com/2017/08/cara-install-xampp-yang-baik-dan-benar.html)
 
-
-
-
 ## 👨‍💻 Developer
+
 Kelompok 4 SMARTIC TI A UNTAD :
+
 1. Idham Halid (F55124040)
 2. Haerul Ilman (F55124018)
 3. Javier Geraldo Immanuel Koagouw (F55124034)
@@ -108,4 +109,7 @@ Kelompok 4 SMARTIC TI A UNTAD :
 5. Ismi Fadilah (F55124024)
 
 📝 Note: Project ini untuk keperluan edukasi dan tugas kuliah. Dilarang memperjualbelikan tanpa modifikasi signifikan/ hubungi [https://github.com/muhazmi/futsal].
+
+```
+
 ```
