@@ -1,4 +1,6 @@
-***PROJECT INI TIDAK DIIZINKAN UNTUK DIPERJUAL BELIKAN KEPADA SIAPAPUN KECUALI SUDAH ANDA MODIFIKASI***
+PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/futsal] DAN TIDAK DIIZINKAN UNTUK DIPERJUAL BELIKAN KEPADA SIAPAPUN KECUALI SUDAH ANDA MODIFIKASI
+
+---
 
 <div align="center">
   <br>
@@ -20,7 +22,11 @@
 
 ![cover](ss_project/SSSistemFutsal-Dashboard.jpg)
 
-Project ini dibuat dengan tujuan membantu Anda yang sedang belajar Codeigniter 3 dengan studi kasus pembuatan sistem booking lapangan futsal. Setelah belajar dan memahami project ini Anda dapat membuat project lain atau mengembangkan yang sudah ada supaya lebih baik lagi. Semoga bermanfaat.
+## PERUBAHAN DAN UPDATE TERBARU :
+
+1. Migrasi dari SQLite ke MySQL
+2. Hapus Sistem Captcha
+3. Perbaikan bug dan Optimasi Kode
 
 ## Fitur
 
@@ -42,7 +48,8 @@ Project ini dibuat dengan tujuan membantu Anda yang sedang belajar Codeigniter 3
 ## Requirement
 
 1. PHP 7.2^
-2. SQLite3 (untuk testing) atau MySQL
+2. MySQL
+3. Web Server (Apache/Nginx)
 
 ## Library
 
@@ -53,34 +60,27 @@ Project ini dibuat dengan tujuan membantu Anda yang sedang belajar Codeigniter 3
 
 ## Instalasi
 
-### Paling Cepat
+## Menggunakan XAMPP
 
-Pastikan Anda sudah install SQLite3 di pc/komputer/laptop Anda. Jika belum, silahkan install terlebih dahulu, lalu aktifkan extension sqlite3 di `php.ini` Anda
+1. Download/Clone Project ini
+2. Letakkan di folder `htdocs` (rename folder menjadi `futsal`)
+3. Buat database baru di phpMyAdmin dengan nama `futsal`
+4. Import file `database.sql` yang tersedia
+5. Akses ke `http://localhost/futsal`
 
-Jika anda menggunakan Laragon, silahkan aktifkan di menu PHP > Extensions > sqlite3 seperti gambar dibawah ini:
+## Konfigurasi Database
 
-![how to](ss_project/extension_need_to_activate_sqlite3.png)
+Edit file `application/config/database.php`:
 
-Kemudian pergi ke direktori project `root`, buka terminal lalu jalankan web server dengan perintah:
+```php
+$db['default'] = array(
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'futsal',
+    // ... konfigurasi lainnya
+);
 
-```bash
-php -S localhost:8080
-```
-
-akses ke `http://localhost:8080` di browser Anda.
-
-### Menggunakan Stack Development Server
-
-> Karena bawaan database ini menggunakan SQLite3, perlu dilakukan penyesuaian pada file `application/config/database.php`. Silahkan baca instruksi comment pada file tersebut.
-
-Saya asumsikan Anda telah menginstall lampp stack, xampp, atau local development server lainnya. Kalau sudah, silahkan lanjut ke tahapan dibawah ini, namun apabila belum maka bisa ke bagian paling bawah yang ada di README ini.
-
-1. Silahkan download/clone project ini ke pc/komputer/laptop Anda
-2. Letakkan di folder htdocs
-3. Buat database baru di phpmyadmin atau database manager lainnya dengan nama futsal
-4. Import database yang ada di dalam folder db
-5. Buka terminal ke direktori project dan jalankan perintah composer update
-6. Akses ke `http://localhost/futsal`
 
 ## Cara Login
 
@@ -92,9 +92,11 @@ Saya asumsikan Anda telah menginstall lampp stack, xampp, atau local development
     - Gunakan akun biasa dengan email `batistuta@gmail.com` dan password: asdfghjkl, Admin: `userpremium@gmail.com` dan password: asdfghjkl
 
 ## Catatan
+1. TANPA CAPTCHA - Sistem login sudah dimodifikasi tanpa captcha untuk kemudahan testing
+2. DATABASE MYSQL - Menggunakan MySQL sebagai database utama
 
-1. Created by Muhammad Azmi - [muhazmi.my.id](https://muhazmi.my.id) / AmperaKoding - [amperakoding.com](https://amperakoding.com)
-2. Sistem membership dilakukan secara manual dengan cara Customer menghubungi SuperAdmin. Kemudian SuperAdmin akan mengganti Tipe User Customer tersebut di backend panel sebagai SuperAdmin.
+3. Created by Muhammad Azmi - [muhazmi.my.id](https://muhazmi.my.id) / AmperaKoding - [amperakoding.com](https://amperakoding.com)
+4. Sistem membership dilakukan secara manual dengan cara Customer menghubungi SuperAdmin. Kemudian SuperAdmin akan mengganti Tipe User Customer tersebut di backend panel sebagai SuperAdmin.
 
 ## Cara Install Local Development Server
 
@@ -107,3 +109,15 @@ Anda bisa menginstall xampp/wampp atau LAMPP Stack di pc/komputer/laptop yang di
 Referensi lainnya terkait SQLite3:
 
 1. [Dari Nol: Pengalaman Menggunakan SQLite dan PHP di Laragon](https://rachmad.dev/blog/dari-nol-pengalaman-menggunakan-sqlite-dan-php-di-laragon)
+
+
+👨‍💻 Developer
+Kelompok 4 SMARTIC TI A UNTAD :
+1. Idham Halid (F55124040)
+2. Haerul Ilman (F55124018)
+3. Javier Geraldo Immanuel Koagouw (F55124034)
+4. Fauzhira Dwi Septiana (F5512407)
+5. Ismi Fadilah (F55124024)
+
+📝 Note: Project ini untuk keperluan edukasi dan tugas kuliah. Dilarang memperjualbelikan tanpa modifikasi signifikan/ hubungi [https://github.com/muhazmi/futsal].
+```
