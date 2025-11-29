@@ -69,18 +69,8 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 5. Akses ke `http://localhost/futsal`
 
 ## Konfigurasi Database
-
-Edit file `application/config/database.php`:
-
-```php
-$db['default'] = array(
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'database' => 'futsal',
-    // ... konfigurasi lainnya
-);
-
+Edit file yang berada di : `application/config/database.php`:
+![Konfigurasi Database Settings](ss_project/Cuplikan%20layar%202025-11-29%20233056.png)
 
 ## Cara Login
 
