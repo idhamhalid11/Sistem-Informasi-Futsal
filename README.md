@@ -70,7 +70,7 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 
 ## Konfigurasi Database
 Edit file yang berada di : `application/config/database.php`:
-![Konfigurasi Database Settings](https://imgur.com/a/vXnHqbm.png)
+![cover](ss_project/database.php.jpg)
 
 ## Cara Login
 
