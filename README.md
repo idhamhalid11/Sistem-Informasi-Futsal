@@ -70,7 +70,7 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 
 ## Konfigurasi Database
 Edit file yang berada di : `application/config/database.php`:
-![Konfigurasi Database Settings](ss_project/database.php.png)
+![Konfigurasi Database Settings](https://imgur.com/a/vXnHqbm.png)
 
 ## Cara Login
 
@@ -96,12 +96,10 @@ Anda bisa menginstall xampp/wampp atau LAMPP Stack di pc/komputer/laptop yang di
 2. [Cara Install Xampp di OS Linux](https://www.muhazmi.com/2016/12/cara-install-xampp-yang-baik-dan-benar.html)
 3. [Cara Install Xampp di OS Windows](https://www.muhazmi.com/2017/08/cara-install-xampp-yang-baik-dan-benar.html)
 
-Referensi lainnya terkait SQLite3:
-
-1. [Dari Nol: Pengalaman Menggunakan SQLite dan PHP di Laragon](https://rachmad.dev/blog/dari-nol-pengalaman-menggunakan-sqlite-dan-php-di-laragon)
 
 
-👨‍💻 Developer
+
+## 👨‍💻 Developer
 Kelompok 4 SMARTIC TI A UNTAD :
 1. Idham Halid (F55124040)
 2. Haerul Ilman (F55124018)
