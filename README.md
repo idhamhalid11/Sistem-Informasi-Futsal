@@ -26,7 +26,7 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 
 1. Migrasi dari SQLite ke MySQL
 2. Hapus Sistem Captcha
-3. Perbaikan bug dan Optimasi Kode
+3. Perbaikan bug dan Optimasi Kode 
 
 ## Fitur
 
@@ -66,7 +66,7 @@ PROJECT INI HASIL MODIFIKASI DAN BERSUMBER DARI : [https://github.com/muhazmi/fu
 2. Letakkan di folder `htdocs` (rename folder menjadi `futsal`)
 3. Buat database baru di phpMyAdmin dengan nama `futsal`
 4. Import file `database.sql` yang tersedia
-5. Akses ke `http://localhost/futsal`
+5. Akses ke `http://localhost/futsal` (pastikan folder di `htdocs` bernama futsal)
 
 ## Konfigurasi Database
 
